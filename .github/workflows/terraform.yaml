@@ -12,6 +12,15 @@ on:
                     - "true"
                     - "false"
 
+            plan_destroy:
+                description: "run terraform plan destroy?"
+                required: true
+                default: "false"
+                type: choice
+                options:
+                    - "true"
+                    - "false"
+
             destroy:
                 description: "run terraform destroy?"
                 required: true
@@ -54,6 +63,10 @@ jobs:
             - name: Terraform Apply
               if: github.event.inputs.apply == 'true'
               run: terraform apply --auto-approve tfplan
+
+            - name: Plan Destroy
+              if: github.event.inputs.destroy == 'true'
+              run: terraform plan -destroy -out=tfplan
 
             - name: Terraform Destroy
               if: github.event.inputs.destroy == 'true'
