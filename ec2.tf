@@ -4,6 +4,7 @@ resource "aws_instance" "website_server" {
   key_name             = aws_key_pair.instance_key.key_name
   vpc_security_group_ids      = [aws_security_group.website_sg.id]
   iam_instance_profile = aws_iam_instance_profile.ec2-ecr-readonly-profile.name
+  user_data            = file("user_data.sh")
 
   tags = {
     Name        = "website_server"
