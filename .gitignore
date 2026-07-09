@@ -15,6 +15,8 @@ id_rsa
 id_ed25519
 key-pair-ec2
 key-pair-ec2.pub
+github_actions_key
+github_actions_key.pub
 
 # Local .terraform directories
 **/.terraform/*
